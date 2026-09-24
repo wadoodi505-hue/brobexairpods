@@ -1,0 +1,2 @@
+/* Motion primitives are kept in the main stylesheet so scroll-driven transforms
+   remain the single source of truth for the progress indicators. */
