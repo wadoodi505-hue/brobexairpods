@@ -1,10 +1,14 @@
+<!-- repair.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mobile Repair — BROBEX</title>
-  <meta name="description" content="Premium BROBEX mobile repair: interactive diagnostics, display and battery replacement, and precision device restoration.">
+  <title>Mobile Repair & Diagnostics — BROBEX</title>
+  <meta name="description" content="Premium BROBEX mobile device care. Interactive diagnostics, transparent assessments, and precision repair services for smartphones and tablets.">
+  <meta property="og:title" content="Mobile Repair & Diagnostics — BROBEX">
+  <meta property="og:description" content="Premium mobile device care. Interactive diagnostics, transparent assessments, and precision repair services.">
+  <meta property="og:type" content="website">
   <link rel="icon" href="assets/brobex-logo.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -50,16 +54,24 @@
     
     <!-- PREMIUM REPAIR HERO -->
     <section class="page-hero repair-hero">
-      <div class="hero-bg-anim" aria-hidden="true">
-        <div class="glowing-device-outline"></div>
+      <div class="hero-bg-anim" id="hero-anim" aria-hidden="true">
+        <div class="diagnostic-device-vis">
+          <div class="diag-grid"></div>
+          <div class="scan-line"></div>
+          <div class="diag-node node-1"></div>
+          <div class="diag-node node-2"></div>
+          <div class="diag-node node-3"></div>
+          <div class="signal-pulse"></div>
+        </div>
       </div>
       <div class="page-hero-inner reveal">
-        <span class="eyebrow hud-text">BROBEX CARE / LAB</span>
-        <h1>Your device.<br>Restored with precision.</h1>
-        <p>Premium diagnostics, transparent communication, and meticulous care for the tech that runs your day.</p>
+        <span class="eyebrow hud-text">BROBEX DIAGNOSTICS // 01</span>
+        <h1 class="display-headline">Your device.<br>Restored with precision.</h1>
+        <p class="premium-copy">Professional diagnostics, transparent communication, and meticulous technical care for the devices that power your routine.</p>
+        <div class="technical-metadata hud-text">SYS.REQ: INSPECTION / STATUS: READY</div>
         <div class="hero-actions">
-          <a class="button primary" href="#diagnostic-engine">Start diagnosis <span class="arrow">↗</span></a>
-          <a class="button ghost" href="#repair-contact">Estimate repair <span class="arrow">↗</span></a>
+          <a class="button primary" href="#diagnostic-engine">Initialize diagnosis <span class="arrow">↗</span></a>
+          <a class="button ghost" href="#repair-contact">Direct contact <span class="arrow">↗</span></a>
         </div>
       </div>
     </section>
@@ -69,37 +81,53 @@
       <div class="section-shell">
         <div class="text-center reveal">
           <span class="eyebrow hud-text">Interactive Engine</span>
-          <h2>Diagnostic Flow</h2>
-          <p class="section-intro">Identify your issue to generate an indicative service estimate.</p>
+          <h2 class="section-title">Diagnostic Flow</h2>
+          <p class="section-intro">Identify your hardware condition to generate an indicative service assessment.</p>
         </div>
 
         <div class="diagnostic-container glass-panel reveal delay-1">
-          <div class="diag-progress-bar">
+          <div class="diag-progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
             <div class="progress-track"><div class="progress-fill" id="diag-progress-fill"></div></div>
             <div class="progress-steps">
               <span class="step-indicator active" data-step="1">01 Device</span>
-              <span class="step-indicator" data-step="2">02 Problem</span>
+              <span class="step-indicator" data-step="2">02 Issue</span>
               <span class="step-indicator" data-step="3">03 Condition</span>
               <span class="step-indicator" data-step="4">04 Estimate</span>
               <span class="step-indicator" data-step="5">05 Contact</span>
             </div>
           </div>
 
-          <div class="diag-panels">
+          <div class="diag-panels" aria-live="polite">
             <!-- Step 1: Device -->
             <div class="diag-panel active" id="panel-1">
-              <h3>Select your device family</h3>
+              <h3 class="panel-title">Select your device family</h3>
               <div class="selection-grid">
-                <button type="button" class="selector-btn" data-type="device" data-value="iphone">iPhone</button>
-                <button type="button" class="selector-btn" data-type="device" data-value="android">Android</button>
-                <button type="button" class="selector-btn" data-type="device" data-value="tablet">Tablet</button>
-                <button type="button" class="selector-btn" data-type="device" data-value="other">Other</button>
+                <button type="button" class="selector-card" data-type="device" data-value="iphone">
+                  <span class="card-icon">📱</span>
+                  <span class="card-title">iPhone</span>
+                  <span class="card-desc">Apple smartphone models.</span>
+                </button>
+                <button type="button" class="selector-card" data-type="device" data-value="android">
+                  <span class="card-icon">🤖</span>
+                  <span class="card-title">Android</span>
+                  <span class="card-desc">Samsung, Google, and others.</span>
+                </button>
+                <button type="button" class="selector-card" data-type="device" data-value="tablet">
+                  <span class="card-icon">📟</span>
+                  <span class="card-title">Tablet</span>
+                  <span class="card-desc">iPads and Android tablets.</span>
+                </button>
+                <button type="button" class="selector-card" data-type="device" data-value="other">
+                  <span class="card-icon">⚙️</span>
+                  <span class="card-title">Other</span>
+                  <span class="card-desc">Alternative hardware.</span>
+                </button>
               </div>
             </div>
 
             <!-- Step 2: Problem -->
             <div class="diag-panel" id="panel-2">
-              <h3>What primary issue are you experiencing?</h3>
+              <h3 class="panel-title">What primary issue are you experiencing?</h3>
               <div class="selection-grid dynamic-grid" id="problem-grid">
                 <!-- Populated dynamically via JS -->
               </div>
@@ -110,11 +138,23 @@
 
             <!-- Step 3: Condition -->
             <div class="diag-panel" id="panel-3">
-              <h3>What is the current state of the device?</h3>
+              <h3 class="panel-title">What is the current state of the device?</h3>
               <div class="selection-grid">
-                <button type="button" class="selector-btn" data-type="condition" data-value="powers-on">Powers on, mostly functional</button>
-                <button type="button" class="selector-btn" data-type="condition" data-value="intermittent">Intermittent / Glitchy</button>
-                <button type="button" class="selector-btn" data-type="condition" data-value="dead">Completely unresponsive</button>
+                <button type="button" class="selector-card" data-type="condition" data-value="functional">
+                  <span class="technical-label">ST-01</span>
+                  <span class="card-title">Functional</span>
+                  <span class="card-desc">Device powers on, unlocks, and is mostly usable.</span>
+                </button>
+                <button type="button" class="selector-card" data-type="condition" data-value="intermittent">
+                  <span class="technical-label">ST-02</span>
+                  <span class="card-title">Intermittent</span>
+                  <span class="card-desc">Issue appears inconsistently. Device glitches or loops.</span>
+                </button>
+                <button type="button" class="selector-card" data-type="condition" data-value="unresponsive">
+                  <span class="technical-label">ST-03</span>
+                  <span class="card-title">Unresponsive</span>
+                  <span class="card-desc">Device does not power on, charge, or respond normally.</span>
+                </button>
               </div>
               <div class="panel-actions">
                 <button type="button" class="button ghost back-btn" data-target="2">← Back</button>
@@ -124,45 +164,113 @@
             <!-- Step 4: Estimate Result -->
             <div class="diag-panel" id="panel-4">
               <div class="estimate-result-box glass-panel">
-                <span class="eyebrow hud-text">Indicative Analysis</span>
-                <h3 id="est-title" class="gold-text">Reviewing Configuration</h3>
-                <div class="estimate-details">
-                  <div class="est-row"><span>Estimated Range:</span> <strong id="est-price" class="green-text">--</strong></div>
-                  <div class="est-row"><span>Service Category:</span> <strong id="est-category">--</strong></div>
-                  <div class="est-row"><span>Requirement:</span> <strong id="est-inspection">--</strong></div>
+                <div class="est-header">
+                  <span class="eyebrow hud-text">Indicative Analysis</span>
+                  <div class="confidence-indicator" title="Estimate Confidence">
+                    <span class="conf-dot active"></span>
+                    <span class="conf-dot active"></span>
+                    <span class="conf-dot"></span>
+                  </div>
                 </div>
-                <p class="disclaimer">Note: Final pricing and exact turnaround times are entirely dependent on a physical, in-person inspection. This is an indicative estimate only.</p>
+                <h3 id="est-title" class="gold-text panel-title">Reviewing Configuration</h3>
+                <div class="estimate-details editorial-grid">
+                  <div class="est-row">
+                    <span class="est-label">Estimated Range:</span> 
+                    <strong id="est-price" class="green-text est-value">--</strong>
+                  </div>
+                  <div class="est-row">
+                    <span class="est-label">Service Category:</span> 
+                    <strong id="est-category" class="est-value">--</strong>
+                  </div>
+                  <div class="est-row">
+                    <span class="est-label">Requirement:</span> 
+                    <strong id="est-inspection" class="est-value">--</strong>
+                  </div>
+                </div>
+                <div class="est-alert">
+                  <strong>Notice:</strong> Final pricing and turnaround times are entirely dependent on physical, in-person inspection. This is an indicative estimate only.
+                </div>
                 <div class="panel-actions">
-                  <button type="button" class="button ghost back-btn" data-target="3">← Back</button>
-                  <button type="button" class="button primary next-btn" data-target="5">Proceed to Booking <span class="arrow">↗</span></button>
+                  <button type="button" class="button ghost back-btn" data-target="1">← Recalculate</button>
+                  <button type="button" class="button primary next-btn" data-target="5">Proceed to Request <span class="arrow">↗</span></button>
                 </div>
               </div>
             </div>
 
             <!-- Step 5: Contact -->
             <div class="diag-panel" id="panel-5">
-              <h3>Request a Physical Diagnosis</h3>
+              <h3 class="panel-title">Finalize Diagnostic Request</h3>
+              
+              <div class="diagnostic-summary">
+                <div class="summary-item">
+                  <span class="hud-text">DEVICE</span>
+                  <strong id="sum-device">--</strong>
+                </div>
+                <div class="summary-item">
+                  <span class="hud-text">ISSUE</span>
+                  <strong id="sum-issue">--</strong>
+                </div>
+                <div class="summary-item">
+                  <span class="hud-text">CONDITION</span>
+                  <strong id="sum-condition">--</strong>
+                </div>
+                <div class="summary-item">
+                  <span class="hud-text">ESTIMATE</span>
+                  <strong id="sum-price" class="green-text">--</strong>
+                </div>
+                <button type="button" class="text-link back-btn" data-target="1">Modify selections</button>
+              </div>
+
               <form id="booking-form" class="polished-form" novalidate>
                 <input type="hidden" name="sys-device" id="sys-device">
                 <input type="hidden" name="sys-issue" id="sys-issue">
+                <input type="hidden" name="sys-condition" id="sys-condition">
                 
                 <div class="form-row">
                   <div class="field">
                     <label for="b-name">Name</label>
-                    <input type="text" id="b-name" name="name" required>
+                    <input type="text" id="b-name" name="name" required aria-required="true">
                   </div>
                   <div class="field">
                     <label for="b-contact">Email or Phone</label>
-                    <input type="text" id="b-contact" name="contact" required>
+                    <input type="text" id="b-contact" name="contact" required aria-required="true">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="b-method">Preferred Contact Method</label>
+                    <select id="b-method" name="method" class="styled-select">
+                      <option value="email">Email</option>
+                      <option value="phone">Phone Call</option>
+                      <option value="text">Text/WhatsApp</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="b-timing">Preferred Service Timing</label>
+                    <select id="b-timing" name="timing" class="styled-select">
+                      <option value="asap">As soon as possible</option>
+                      <option value="this-week">Sometime this week</option>
+                      <option value="flexible">Flexible</option>
+                    </select>
                   </div>
                 </div>
                 <div class="field">
                   <label for="b-desc">Additional Details</label>
-                  <textarea id="b-desc" name="description" rows="3" placeholder="Any other symptoms?"></textarea>
+                  <textarea id="b-desc" name="description" rows="3" placeholder="Any other symptoms? Previous repair history?"></textarea>
                 </div>
-                <div class="panel-actions">
+                
+                <div id="form-success-state" class="success-state hidden">
+                  <h4 class="green-text">REQUEST PREPARED</h4>
+                  <p>Your diagnostic details have been captured in this interface.</p>
+                  <div class="hero-actions" style="margin-top: 1rem;">
+                    <a class="button primary" href="mailto:brobex.ffx@gmail.com">Email BROBEX Directly <span class="arrow">↗</span></a>
+                    <button type="button" class="button ghost" id="reset-diag-btn">Return to diagnostic</button>
+                  </div>
+                </div>
+
+                <div class="panel-actions" id="form-actions-row">
                   <button type="button" class="button ghost back-btn" data-target="4">← Back</button>
-                  <button class="button primary" type="submit">Submit Request <span class="arrow">↗</span></button>
+                  <button class="button primary" type="submit">Prepare Request <span class="arrow">↗</span></button>
                 </div>
                 <p class="form-status" aria-live="polite"></p>
               </form>
@@ -173,53 +281,73 @@
     </section>
 
     <!-- REPAIR PROCESS -->
-    <section class="section">
+    <section class="section editorial-section">
       <div class="section-shell">
         <span class="eyebrow hud-text">Methodology</span>
         <h2 class="section-title">The BROBEX Process</h2>
         <div class="process-timeline reveal">
+          <div class="process-track-line"></div>
           <div class="process-step">
             <div class="step-num gold-text">01</div>
             <h4>Diagnose</h4>
             <p>Comprehensive physical and software testing to isolate the root cause.</p>
+            <span class="technical-label">ASSESSMENT</span>
           </div>
           <div class="process-step">
             <div class="step-num gold-text">02</div>
             <h4>Confirm</h4>
             <p>Transparent communication of the issue, solutions, and exact pricing.</p>
+            <span class="technical-label">APPROVAL</span>
           </div>
           <div class="process-step">
             <div class="step-num gold-text">03</div>
             <h4>Repair</h4>
             <p>Precision restoration using appropriate, high-quality components.</p>
+            <span class="technical-label">EXECUTION</span>
           </div>
           <div class="process-step">
             <div class="step-num gold-text">04</div>
             <h4>Test</h4>
-            <p>Rigorous post-repair QA to ensure absolute functional integrity.</p>
+            <p>Rigorous post-repair QA to ensure functional integrity.</p>
+            <span class="technical-label">QA CHECK</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONCEPTUAL SERVICE STATUS UI -->
+    <!-- WHAT WE CHECK -->
+    <section class="section">
+      <div class="section-shell">
+        <span class="eyebrow hud-text">Coverage</span>
+        <h2 class="section-title">Diagnostic Areas</h2>
+        <p class="section-intro">Diagnostic areas may include the following hardware sub-systems depending on the reported issue.</p>
+        
+        <div class="check-grid reveal">
+          <div class="check-item"><span class="hud-text gold-text">PWR</span> <h4>Power & Logic</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">DIS</span> <h4>Display & Touch</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">BAT</span> <h4>Battery Health</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">CHG</span> <h4>Charging Port</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">AUD</span> <h4>Audio Systems</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">CAM</span> <h4>Optics / Camera</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">NET</span> <h4>Connectivity</h4></div>
+          <div class="check-item"><span class="hud-text gold-text">SYS</span> <h4>Software / OS</h4></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPAIR DECISION -->
     <section class="section dark-band">
       <div class="section-shell text-center">
-        <span class="eyebrow hud-text">Concept Interface</span>
-        <h2>Live Status Tracker</h2>
-        <p class="section-intro">A conceptual look at how device repair tracking works.</p>
-        
-        <div class="status-ui-concept glass-panel reveal">
-          <div class="status-hud">
-            <div class="hud-item active"><span class="pulse-dot"></span> Diagnosis</div>
-            <div class="hud-line"></div>
-            <div class="hud-item"><span class="pulse-dot"></span> Approval</div>
-            <div class="hud-line"></div>
-            <div class="hud-item"><span class="pulse-dot"></span> In Repair</div>
-            <div class="hud-line"></div>
-            <div class="hud-item"><span class="pulse-dot"></span> Testing</div>
-            <div class="hud-line"></div>
-            <div class="hud-item"><span class="pulse-dot"></span> Ready</div>
+        <div class="decision-box reveal">
+          <span class="eyebrow hud-text">Consultation</span>
+          <h2 class="section-title">A Deliberate Approach to Repair</h2>
+          <p class="premium-copy mx-auto">Not every damaged device should automatically be repaired. We evaluate condition, component cost, and device age to ensure a repair is the sensible path forward.</p>
+          
+          <div class="decision-steps">
+            <div class="d-step"><strong>Diagnose:</strong> Understand the issue.</div>
+            <div class="d-step"><strong>Assess:</strong> Consider condition and viability.</div>
+            <div class="d-step"><strong>Decide:</strong> Review the recommendation.</div>
+            <div class="d-step"><strong>Proceed:</strong> Choose whether to continue.</div>
           </div>
         </div>
       </div>
@@ -231,34 +359,111 @@
         
         <!-- Care Tips -->
         <div class="care-section reveal">
-          <span class="eyebrow hud-text">Longevity</span>
-          <h2>Device Care</h2>
-          <ul class="care-list">
-            <li><strong>Backups:</strong> Always maintain cloud or local backups before any service.</li>
-            <li><strong>Water Damage:</strong> Do not charge. Power off immediately and seek diagnosis.</li>
-            <li><strong>Battery Health:</strong> Avoid extreme temperatures and deep discharging (0%).</li>
-            <li><strong>Charging Issues:</strong> Often caused by lint buildup. Do not use metal tools to clean.</li>
-            <li><strong>Cracked Screens:</strong> Apply clear tape over shattered glass to prevent injury before repair.</li>
-          </ul>
+          <span class="eyebrow hud-text">Preparation</span>
+          <h2 class="section-title">Before Your Visit</h2>
+          <div class="care-checklist">
+            <div class="check-row">
+              <div class="check-num hud-text gold-text">01</div>
+              <div class="check-content">
+                <h4>Back Up Your Data</h4>
+                <p>Ensure critical files are secured via cloud or local backup prior to any diagnostic.</p>
+              </div>
+            </div>
+            <div class="check-row">
+              <div class="check-num hud-text gold-text">02</div>
+              <div class="check-content">
+                <h4>Power Down If Water-Damaged</h4>
+                <p>Do not attempt to charge a wet device. Turn it off immediately.</p>
+              </div>
+            </div>
+            <div class="check-row">
+              <div class="check-num hud-text gold-text">03</div>
+              <div class="check-content">
+                <h4>Bring Necessary Accessories</h4>
+                <p>If experiencing power issues, please bring your primary charging cable and adapter.</p>
+              </div>
+            </div>
+            <div class="check-row">
+              <div class="check-num hud-text gold-text">04</div>
+              <div class="check-content">
+                <h4>Describe The Symptoms</h4>
+                <p>Note any unusual behaviors, heat generation, or specific triggers for the fault.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- FAQ -->
         <div class="faq-section reveal delay-1">
           <span class="eyebrow hud-text">Knowledge</span>
-          <h2>Common Questions</h2>
+          <h2 class="section-title">Common Questions</h2>
           <div class="faq-accordion">
             <details>
+              <summary>Do I need an appointment?</summary>
+              <p>While walk-ins or physical drop-offs may be accommodated, starting with an online diagnostic request ensures priority attention.</p>
+            </details>
+            <details>
+              <summary>Is the online estimate final?</summary>
+              <p>No. All online estimates are purely conceptual and indicative. Exact pricing requires physical inspection of the hardware.</p>
+            </details>
+            <details>
               <summary>Do you use original parts?</summary>
-              <p>We source premium replacement components. We do not make unsupported OEM certifications, but prioritize reliability, display accuracy, and battery chemistry.</p>
+              <p>We source premium replacement components prioritizing reliability, display accuracy, and battery chemistry. We do not fabricate unsupported OEM certifications.</p>
             </details>
             <details>
-              <summary>Will I lose my data?</summary>
-              <p>Data loss is rare for hardware repairs like screens or batteries, but software issues or motherboard damage carry risks. Back up your device prior to service.</p>
+              <summary>Can my data be lost?</summary>
+              <p>Data loss is rare for modular repairs (screens, batteries), but motherboard damage carries inherent risks. Always back up your device.</p>
             </details>
             <details>
-              <summary>How long does a repair take?</summary>
-              <p>Standard repairs (screens, batteries) are often completed same-day. Diagnostics and complex logic board issues require 2-5 business days.</p>
+              <summary>How should I handle water damage?</summary>
+              <p>Turn the device off immediately. Do not charge it. Do not attempt to turn it on to "check if it works." Bring it in for a teardown.</p>
             </details>
+            <details>
+              <summary>How long can diagnosis take?</summary>
+              <p>Standard visual assessments are fast, but intermittent logic board issues may require 2–5 business days for deep diagnosis.</p>
+            </details>
+            <details>
+              <summary>What happens if it cannot be repaired?</summary>
+              <p>If a device is deemed beyond economical repair or completely dead, we will outline your options, including potential data recovery efforts.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPTUAL SERVICE STATUS UI -->
+    <section class="section dark-band">
+      <div class="section-shell text-center">
+        <span class="eyebrow hud-text">Concept Interface</span>
+        <h2 class="section-title">Live Status Tracker</h2>
+        <p class="section-intro">An indicative visualization of how our tracking methodology operates.</p>
+        
+        <div class="status-ui-concept glass-panel reveal">
+          <div class="status-hud">
+            <div class="hud-item active">
+              <span class="pulse-dot"></span> 
+              <span class="hud-label">Diagnosis</span>
+            </div>
+            <div class="hud-line active-line"></div>
+            <div class="hud-item active">
+              <span class="pulse-dot"></span> 
+              <span class="hud-label">Approval</span>
+            </div>
+            <div class="hud-line active-line moving-line"></div>
+            <div class="hud-item current">
+              <span class="pulse-dot"></span> 
+              <span class="hud-label">In Repair</span>
+            </div>
+            <div class="hud-line"></div>
+            <div class="hud-item">
+              <span class="pulse-dot"></span> 
+              <span class="hud-label">Testing</span>
+            </div>
+            <div class="hud-line"></div>
+            <div class="hud-item">
+              <span class="pulse-dot"></span> 
+              <span class="hud-label">Ready</span>
+            </div>
           </div>
         </div>
       </div>
@@ -269,28 +474,33 @@
       <div class="section-shell">
         <div class="trust-grid reveal">
           <div class="trust-card glass-panel">
-            <h4 class="gold-text">Clear Diagnosis</h4>
-            <p>No guesswork. Methodical testing first.</p>
+            <span class="technical-label gold-text">TR-01</span>
+            <h4 class="card-title">Clear Diagnosis</h4>
+            <p>No guesswork. Methodical testing first to determine actual faults.</p>
           </div>
           <div class="trust-card glass-panel">
-            <h4 class="gold-text">Transparent Comm.</h4>
-            <p>You approve the final cost before we start.</p>
+            <span class="technical-label gold-text">TR-02</span>
+            <h4 class="card-title">Clear Communication</h4>
+            <p>You understand the recommended solution and costs before we proceed.</p>
           </div>
           <div class="trust-card glass-panel">
-            <h4 class="gold-text">Careful Handling</h4>
-            <p>ESD-safe procedures and precise reassembly.</p>
+            <span class="technical-label gold-text">TR-03</span>
+            <h4 class="card-title">Careful Handling</h4>
+            <p>Devices are handled deliberately, ensuring precise reassembly.</p>
           </div>
           <div class="trust-card glass-panel">
-            <h4 class="gold-text">Device Testing</h4>
-            <p>Strict QA checklist post-repair.</p>
+            <span class="technical-label gold-text">TR-04</span>
+            <h4 class="card-title">Post-Repair Check</h4>
+            <p>Functional QA checks after service to verify standard operations.</p>
           </div>
         </div>
 
-        <div class="final-cta reveal" style="margin-top: 60px;">
-          <h2>Need a diagnosis?</h2>
-          <div class="hero-actions" style="justify-content: center;">
-            <a class="button primary" href="#diagnostic-engine">Estimate repair <span class="arrow">↗</span></a>
-            <a class="button ghost" href="mailto:brobex.ffx@gmail.com">Contact BROBEX <span class="arrow">↗</span></a>
+        <div class="final-cta reveal" style="margin-top: 80px;">
+          <h2 class="display-headline">Know what's wrong.<br>Know what comes next.</h2>
+          <p class="premium-copy mx-auto">Start with an indicative diagnosis, then speak directly with BROBEX.</p>
+          <div class="hero-actions" style="justify-content: center; margin-top: 2rem;">
+            <a class="button primary" href="#diagnostic-engine">Start diagnosis <span class="arrow">↗</span></a>
+            <a class="button ghost" href="mailto:brobex.ffx@gmail.com">Email BROBEX <span class="arrow">↗</span></a>
           </div>
         </div>
       </div>
