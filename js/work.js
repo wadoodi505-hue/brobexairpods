@@ -57,9 +57,9 @@
       category: 'Games',
       type: 'Featured / Interactive Game',
       tech: ['HTML', 'CSS', 'JavaScript'],
-      shortDesc: 'A browser-based stacking game with responsive interaction, clear feedback, and a focused frontend play loop.',
-      desc: 'A precision-timing stack game built using pure JavaScript, dynamic collision mechanics, visual stack scaling, and instant playability.',
-      demoUrl: 'https://brobex-store-stack-tower.vercel.app/'
+      shortDesc: 'Designed and engineered as a central digital showcase for high-grade web builds. Features a custom dark-mode aesthetic, micro-interactions, seamless responsive breakpoints, dynamic project filtering, and accessible modal architecture. ',
+      desc: 'Designed and engineered as a central digital showcase for high-grade web builds. Features a custom dark-mode aesthetic, micro-interactions, seamless responsive breakpoints, dynamic project filtering, and accessible modal architecture.',
+      demoUrl: 'https://brobexportfolio.vercel.app/'
     },
     {
       id: 'tic-tac-toe',
@@ -217,3 +217,30 @@
   renderGrid();
 
 })();
+// Add or update the featured project entry in your modal data object
+const featuredProjectData = {
+  id: "featured-brobex",
+  number: "00 / 06",
+  title: "BROBEX Portfolio",
+  category: "Professional Portfolio",
+  badge: "00 / 06 — FEATURED BUILD",
+  description: "A premium personal portfolio engineered to showcase modern frontend development, interactive experiences, responsive design, and high-performance web interfaces.",
+  longDescription: "Designed and engineered as a central digital showcase for high-grade web builds. Features a custom dark-mode aesthetic, micro-interactions, seamless responsive breakpoints, dynamic project filtering, and accessible modal architecture.",
+  tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+  liveUrl: "https://brobexportfolio.vercel.app/",
+  image: "assets/brobex-logo.png"
+};
+
+// Ensure modal click event listener checks for 'featured-brobex'
+document.querySelectorAll('.view-details-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const id = e.currentTarget.getAttribute('data-project-id');
+    if (id === 'featured-brobex') {
+      openModal(featuredProjectData);
+    } else {
+      // Handles standard 6 archive projects without modification
+      const project = projectsData.find(p => p.id === id);
+      if (project) openModal(project);
+    }
+  });
+});
