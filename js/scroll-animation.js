@@ -1,34 +1,22 @@
 /**
- * Dynamic Frame-Sequence Scroll Engine
- * - Smooth Lerp (Linear Interpolation)
- * - Synchronous Canvas Drawing (Fixes flashing/black frames bug)
- * - No Loading Screens
+ * 155-Frame Cinematic Canvas Scroll Engine
+ * Handled via requestAnimationFrame & smooth interpolation
  */
-
 (() => {
-  // 1. Configuration
   const TOTAL_FRAMES = 155;
- const FRAME_PATH = (index) => `assets/frames/ezgif-frame-${String(index + 1).padStart(3, '0')}.png`;
-  const LERP_FACTOR = 0.08; 
+  const FRAME_PATH = (index) => `assets/frames/ezgif-frame-${String(index + 1).padStart(3, '0')}.png`;
+  const LERP_FACTOR = 0.09;
 
-  // 2. DOM Selectors
-const sequence = document.querySelector('.sequence') || document.body;
-const sticky = document.querySelector('.sequence-sticky') || sequence;
-  const canvas = document.querySelector('.sequence-canvas');
+  const sequence = document.querySelector('.sequence');
+  if (!sequence) return;
 
-  // Remove any remaining loading text or overlays automatically
-  const hideLoaders = () => {
-    const loaders = document.querySelectorAll('.loading-screen, #loader, .progress-container, .loader');
-    loaders.forEach(el => el.style.display = 'none');
-  };
-  hideLoaders();
-
+  const sticky = sequence.querySelector('.sequence-sticky');
+  const canvas = sequence.querySelector('.sequence-canvas');
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d', { alpha: false });
+  const cache = new Map();
   
-  // 3. State Management
-  const cache = new Map(); // Stores { img: HTMLImageElement, loaded: boolean }
   let targetProgress = 0;
   let currentProgress = 0;
   let desiredFrame = 0;
@@ -36,9 +24,13 @@ const sticky = document.querySelector('.sequence-sticky') || sequence;
   let isLerping = false;
   let sequenceVisible = false;
 
-  // 4. Dynamic DPR Resize Handler
+  const chapterSteps = document.querySelectorAll('.chapter-step');
+  const storyCopies = document.querySelectorAll('.story-copy');
+  const counterBadge = document.getElementById('frame-counter-badge');
+  const progressBar = document.getElementById('sequence-progress-bar');
+
   const resizeCanvas = () => {
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
 
@@ -49,60 +41,48 @@ const sticky = document.querySelector('.sequence-sticky') || sequence;
     draw(true);
   };
 
-  // 5. Synchronous Image Preloader
   const fetchImage = (index) => {
     if (cache.has(index)) return cache.get(index);
 
     const img = new Image();
     img.decoding = 'async';
-    
     const frameData = { img, loaded: false };
     cache.set(index, frameData);
 
     img.onload = () => {
       frameData.loaded = true;
-      // If the user is waiting on this exact frame, draw it immediately
       if (index === desiredFrame) draw(true);
     };
-    
+
     img.src = FRAME_PATH(index);
     return frameData;
   };
 
-  // Look-ahead Pre-warmer
   const warmWindow = (centerFrame) => {
-    for (let i = -15; i <= 15; i++) {
+    for (let i = -12; i <= 12; i++) {
       const target = centerFrame + i;
-      if (target >= 0 && target < TOTAL_FRAMES) {
-        fetchImage(target);
-      }
+      if (target >= 0 && target < TOTAL_FRAMES) fetchImage(target);
     }
   };
 
-  // 6. Synchronous Draw Function (Zero Flashing)
   const draw = (forceRedraw = false) => {
     if (!forceRedraw && desiredFrame === lastDrawnFrame) return;
 
     const frameData = fetchImage(desiredFrame);
     let imageToDraw = null;
 
-    // Check if the exact frame we want is ready
     if (frameData && frameData.loaded) {
       imageToDraw = frameData.img;
       lastDrawnFrame = desiredFrame;
     } else {
-      // Fallback: If not ready, draw the last known loaded frame to prevent black screens
       const fallback = cache.get(lastDrawnFrame);
-      if (fallback && fallback.loaded) {
-        imageToDraw = fallback.img;
-      }
+      if (fallback && fallback.loaded) imageToDraw = fallback.img;
     }
 
-    if (!imageToDraw) return; // Wait for first frame to load
+    if (!imageToDraw) return;
 
     const cw = canvas.width;
     const ch = canvas.height;
-
     const scale = Math.max(cw / imageToDraw.naturalWidth, ch / imageToDraw.naturalHeight);
     const rw = imageToDraw.naturalWidth * scale;
     const rh = imageToDraw.naturalHeight * scale;
@@ -113,7 +93,29 @@ const sticky = document.querySelector('.sequence-sticky') || sequence;
     ctx.drawImage(imageToDraw, ox, oy, rw, rh);
   };
 
-  // 7. Easing Render Loop
+  const updateUI = (progress) => {
+    if (counterBadge) {
+      counterBadge.textContent = `FRAME ${String(desiredFrame + 1).padStart(3, '0')} / ${TOTAL_FRAMES}`;
+    }
+
+    if (progressBar) {
+      progressBar.style.transform = `scaleX(${progress})`;
+    }
+
+    // Determine current chapter (5 equal zones)
+    const chapterIndex = Math.min(4, Math.floor(progress * 5));
+
+    chapterSteps.forEach((step, idx) => {
+      const active = idx === chapterIndex;
+      step.classList.toggle('active', active);
+    });
+
+    storyCopies.forEach((copy, idx) => {
+      const active = idx === chapterIndex;
+      copy.classList.toggle('active', active);
+    });
+  };
+
   const renderLoop = () => {
     if (!sequenceVisible) {
       isLerping = false;
@@ -125,20 +127,18 @@ const sticky = document.querySelector('.sequence-sticky') || sequence;
 
     warmWindow(desiredFrame);
     draw();
+    updateUI(currentProgress);
 
-    if (Math.abs(targetProgress - currentProgress) > 0.0001) {
+    if (Math.abs(targetProgress - currentProgress) > 0.0002) {
       requestAnimationFrame(renderLoop);
     } else {
       isLerping = false;
     }
   };
 
-  // 8. Scroll Tracker (No Loading Percentage Updates)
   const updateSequence = () => {
     const rect = sequence.getBoundingClientRect();
     const scrollable = Math.max(1, sequence.offsetHeight - sticky.offsetHeight);
-    
-    // Clamp between 0 and 1
     targetProgress = Math.min(1, Math.max(0, -rect.top / scrollable));
 
     if (sequenceVisible && !isLerping) {
@@ -147,21 +147,28 @@ const sticky = document.querySelector('.sequence-sticky') || sequence;
     }
   };
 
-  // 9. Intersection Observer (Auto-Pause)
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        sequenceVisible = entry.isIntersecting;
-        if (sequenceVisible) updateSequence();
-      });
-    },
-    { threshold: 0 }
-  );
+  // Chapter step click handler
+  chapterSteps.forEach((step) => {
+    step.addEventListener('click', () => {
+      const index = Number(step.dataset.chapter || 0);
+      const targetRatio = index / 4;
+      const scrollable = Math.max(1, sequence.offsetHeight - sticky.offsetHeight);
+      const targetTop = sequence.offsetTop + targetRatio * scrollable;
+
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    });
+  });
+
+  const observer = new IntersectionObserver(([entry]) => {
+    sequenceVisible = entry.isIntersecting;
+    if (sequenceVisible) updateSequence();
+  }, { threshold: 0 });
+
   observer.observe(sequence);
 
-  // 10. Initialization
   const init = () => {
     resizeCanvas();
-    for (let i = 0; i < Math.min(30, TOTAL_FRAMES); i++) fetchImage(i);
+    for (let i = 0; i < 25; i++) fetchImage(i);
     updateSequence();
   };
 

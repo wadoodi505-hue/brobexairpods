@@ -23,86 +23,498 @@
   <div class="global-scroll-progress" data-scroll-progress aria-hidden="true"><span></span></div>
 
   <a class="skip-link" href="#main-content">Skip to content</a>
+  
   <header class="site-header">
     <div class="nav-shell">
-      <a class="brand-link" href="index.html" aria-label="BROBEX home"><img class="brand-logo" src="assets/brobex-logo.png" alt="BROBEX logo"></a>
+      <a class="brand-link" href="index.html" aria-label="BROBEX home">
+        <img class="brand-logo" src="assets/brobex-logo.png" alt="BROBEX logo">
+      </a>
       <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" aria-current="page">Home</a><a href="airpods.html">AirPods</a><a href="repair.html">Mobile Repair</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="airpods.html">AirPods</a>
+        <a href="repair.html">Mobile Repair</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <a class="nav-cta" href="airpods.html">Explore AirPods <span class="arrow">↗</span></a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
     </div>
   </header>
+  
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <nav aria-label="Mobile navigation"><a href="index.html">Home</a><a href="airpods.html">AirPods</a><a href="repair.html">Mobile Repair</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <nav aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="airpods.html">AirPods</a>
+      <a href="repair.html">Mobile Repair</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
     <a class="button primary" href="airpods.html">Explore AirPods ↗</a>
   </div>
 
   <main id="main-content" class="page-main">
-    <section class="sequence" data-scroll-sequence aria-label="BROBEX Audio product story">
+    
+    <!-- CINEMATIC HERO SECTION -->
+    <section class="hero-cinematic" aria-label="BROBEX Hero Presentation">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+      <div class="hero-shell">
+        <div class="hero-content reveal">
+          <span class="eyebrow">BROBEX AUDIO / CONCEPT STUDY 001</span>
+          <h1 class="hero-title">Engineered for<br><span>the moment.</span></h1>
+          <p class="hero-description">
+            A considered wireless audio study exploring physical precision, acoustic transparency, and calm digital architecture.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="airpods.html">Explore BROBEX Audio <span class="arrow">↗</span></a>
+            <a class="button ghost" href="#frame-sequence">Experience 155 Frames <span class="arrow">↓</span></a>
+          </div>
+          <div class="hero-badges" aria-label="Key highlights">
+            <div class="badge-item"><span class="badge-dot"></span> 155 Frame Sequence</div>
+            <div class="badge-item"><span class="badge-dot"></span> 4 Audio Signal Profiles</div>
+            <div class="badge-item"><span class="badge-dot"></span> Pure Concept Study</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 155-FRAME CINEMATIC PRODUCT EXPERIENCE -->
+    <section class="sequence" id="frame-sequence" data-scroll-sequence aria-label="BROBEX Audio 155 Frame Experience">
       <div class="mobile-wallpaper" aria-hidden="true"></div>
       <div class="sequence-sticky">
-        <canvas class="sequence-canvas" data-sequence-canvas role="img" aria-label="Cinematic BROBEX Audio product sequence"></canvas>
+        <canvas class="sequence-canvas" data-sequence-canvas role="img" aria-label="3D rendering sequence of BROBEX Audio concept"></canvas>
         <div class="particle-field" data-particles aria-hidden="true"></div>
         <div class="sequence-shade" aria-hidden="true"></div>
-        <div class="sequence-label">BROBEX AUDIO / PRODUCT STUDY 001</div>
-        <div class="sequence-copy">
-          <span class="eyebrow">Sound, refined.</span>
-          <h1>Engineered for <span>the moment.</span></h1>
-          <p>A considered wireless audio concept built around clarity, comfort, and the space between you and the world.</p>
-          <div class="sequence-actions"><a class="button primary" href="airpods.html">Explore BROBEX Audio <span class="arrow">↗</span></a><a class="button ghost" href="#signal">View the signal <span class="arrow">↓</span></a></div>
+        
+        <div class="sequence-top-hud">
+          <div class="hud-brand-tag">BROBEX AUDIO / STUDY 001</div>
+          <div class="hud-frame-counter" id="frame-counter-badge">FRAME 001 / 155</div>
         </div>
-        <div class="story-copy" data-stage="0"><span class="eyebrow">01 / The silhouette</span><h2>Designed to disappear.</h2><p>Quietly considered. Instantly familiar.</p></div>
-        <div class="story-copy" data-stage="1"><span class="eyebrow">02 / The detail</span><h2>Precision where it matters.</h2><p>Every surface earns its place.</p></div>
-        <div class="story-copy" data-stage="2"><span class="eyebrow">03 / The sound</span><h2>More signal. Less noise.</h2><p>Immersive listening without visual distraction.</p></div>
-        <div class="story-copy" data-stage="3"><span class="eyebrow">04 / The connection</span><h2>Move naturally.</h2><p>Between your world and your music.</p></div>
-        <div class="story-copy" data-stage="4"><span class="eyebrow">05 / BROBEX Audio</span><h2>Technology, refined.</h2><p>A product concept by BROBEX.</p></div>
-        <div class="sequence-meta"><span>SCROLL TO EXPLORE</span><div class="sequence-progress" aria-hidden="true"><span></span></div></div>
-        <p class="sequence-fallback" data-sequence-fallback hidden>Product sequence unavailable. Continue below to explore the BROBEX Audio study.</p>
+
+        <!-- CHAPTER NAVIGATION INDICATOR -->
+        <nav class="chapter-indicator" aria-label="Sequence Chapter Navigation">
+          <button class="chapter-step active" data-chapter="0" type="button"><span class="chapter-num">01</span><span class="chapter-name">Silhouette</span></button>
+          <button class="chapter-step" data-chapter="1" type="button"><span class="chapter-num">02</span><span class="chapter-name">Detail</span></button>
+          <button class="chapter-step" data-chapter="2" type="button"><span class="chapter-num">03</span><span class="chapter-name">Sound</span></button>
+          <button class="chapter-step" data-chapter="3" type="button"><span class="chapter-num">04</span><span class="chapter-name">Connection</span></button>
+          <button class="chapter-step" data-chapter="4" type="button"><span class="chapter-num">05</span><span class="chapter-name">BROBEX Audio</span></button>
+        </nav>
+
+        <!-- CINEMATIC STORY CHAPTERS -->
+        <div class="story-copy active" data-stage="0">
+          <span class="eyebrow">01 / The Silhouette</span>
+          <h2>Designed to disappear.</h2>
+          <p>Quietly considered. Instantly familiar. Sculpted around human geometry.</p>
+        </div>
+        <div class="story-copy" data-stage="1">
+          <span class="eyebrow">02 / The Detail</span>
+          <h2>Precision where it matters.</h2>
+          <p>Machined acoustic ports, custom stainless mesh, and seam-free surfaces.</p>
+        </div>
+        <div class="story-copy" data-stage="2">
+          <span class="eyebrow">03 / The Sound</span>
+          <h2>More signal. Less noise.</h2>
+          <p>Transparent high-frequency response with zero acoustic dampening.</p>
+        </div>
+        <div class="story-copy" data-stage="3">
+          <span class="eyebrow">04 / The Connection</span>
+          <h2>Move naturally.</h2>
+          <p>Ultra-low latency wireless architecture that responds to your motion.</p>
+        </div>
+        <div class="story-copy" data-stage="4">
+          <span class="eyebrow">05 / BROBEX Audio</span>
+          <h2>Technology, refined.</h2>
+          <p>A flagship physical and digital exploration by BROBEX.</p>
+        </div>
+
+        <div class="sequence-meta">
+          <span>SCROLL TO UNFOLD</span>
+          <div class="sequence-progress" aria-hidden="true"><span id="sequence-progress-bar"></span></div>
+        </div>
+        <p class="sequence-fallback" data-sequence-fallback hidden>Product sequence static preview loaded.</p>
       </div>
     </section>
 
+    <!-- PRODUCT INTERACTION LAB & LIVE SIGNAL VISUALIZER -->
     <section class="section" id="signal">
       <div class="section-shell">
-        <div class="section-head reveal"><div><span class="eyebrow">Audio engineering / 01</span><h2 class="section-title">Make room<br>for the signal.</h2></div><p class="section-intro">BROBEX Audio is a product direction, not a list of borrowed claims. We start with how listening should feel, then shape the system around it.</p></div>
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Audio Engineering / 01</span>
+            <h2 class="section-title">Product Interaction Lab.</h2>
+          </div>
+          <p class="section-intro">
+            An interactive audio interface demonstrating dynamic frequency response, active DSP profiles, and real-time wave visualization.
+          </p>
+        </div>
+
         <div class="signal-panel">
-          <div class="visualizer-card visualizer-copy reveal"><span class="eyebrow">Signal lab</span><h3 class="section-title" style="font-size:clamp(30px,4vw,48px);">Tune the room.</h3><p>Switch between three conceptual listening profiles to see the signal respond.</p><div class="sound-tabs" role="tablist" aria-label="Audio profiles"><button class="sound-tab-btn active" role="tab" aria-selected="true" data-profile="studio">01 Studio</button><button class="sound-tab-btn" role="tab" aria-selected="false" data-profile="quiet">02 Quiet</button><button class="sound-tab-btn" role="tab" aria-selected="false" data-profile="spatial">03 Spatial</button></div></div>
-          <div class="hud-box reveal delay-1" role="tabpanel"><div class="hud-top"><span id="profile-title">Active: Pure studio reference</span><span id="profile-status">Concept profile</span></div><canvas id="visualizer-canvas" aria-label="Animated audio waveform visualizer"></canvas><div class="hud-bottom"><span>LOW</span><span>FIELD RESPONSE</span><span>HIGH</span></div><div class="specs"><div><span>Focus</span><strong>Clarity</strong></div><div><span>Approach</span><strong>Adaptive</strong></div><div><span>Mode</span><strong>Concept</strong></div></div></div>
+          <div class="visualizer-card visualizer-copy reveal">
+            <span class="eyebrow">Signal Control Unit</span>
+            <h3 class="lab-title">Tune the room.</h3>
+            <p id="profile-explanation">Select an audio mode below to dynamically modulate the live waveform and signal metrics.</p>
+            
+            <div class="sound-tabs" role="tablist" aria-label="Audio Engineering Profiles">
+              <button class="sound-tab-btn active" role="tab" aria-selected="true" data-profile="studio">01 Studio</button>
+              <button class="sound-tab-btn" role="tab" aria-selected="false" data-profile="quiet">02 Quiet</button>
+              <button class="sound-tab-btn" role="tab" aria-selected="false" data-profile="spatial">03 Spatial</button>
+              <button class="sound-tab-btn" role="tab" aria-selected="false" data-profile="focus">04 Focus</button>
+            </div>
+          </div>
+
+          <div class="hud-box reveal delay-1" role="tabpanel">
+            <div class="hud-top">
+              <span id="profile-title">Active: Studio Reference</span>
+              <span id="profile-status">Concept DSP Engine</span>
+            </div>
+            
+            <canvas id="visualizer-canvas" aria-label="Live audio frequency waveform visualizer"></canvas>
+            
+            <div class="hud-bottom">
+              <span>20 Hz</span>
+              <span>DYNAMIC FREQUENCY RESPONSE</span>
+              <span>24 kHz</span>
+            </div>
+            
+            <div class="specs">
+              <div><span>Sample Rate</span><strong id="metric-sr">96 kHz / 24-bit</strong></div>
+              <div><span>Latency</span><strong id="metric-lat">12 ms</strong></div>
+              <div><span>Acoustic Mode</span><strong id="metric-mode">Reference</strong></div>
+            </div>
+          </div>
         </div>
-        <div class="metrics-strip reveal" aria-label="Product study metrics">
-          <div class="metric"><strong data-counter data-counter-target="155">0</strong><span>source frames</span></div>
-          <div class="metric"><strong data-counter data-counter-target="3">0</strong><span>listening profiles</span></div>
-          <div class="metric"><strong data-counter data-counter-target="1">0</strong><span>clear point of view</span></div>
+
+        <!-- PRODUCT METRICS DASHBOARD -->
+        <div class="metrics-strip reveal" aria-label="Product study dashboard metrics">
+          <div class="metric-box">
+            <strong data-counter data-counter-target="155">0</strong>
+            <span>Source PNG Frames</span>
+          </div>
+          <div class="metric-box">
+            <strong data-counter data-counter-target="4">0</strong>
+            <span>Listening Profiles</span>
+          </div>
+          <div class="metric-box">
+            <strong>100%</strong>
+            <span>Responsive System</span>
+          </div>
+          <div class="metric-box">
+            <strong>001</strong>
+            <span>Concept Study</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark-band">
-      <div class="section-shell editorial">
-        <div class="reveal"><span class="eyebrow">The product study / 02</span><h2 class="section-title">The details make the difference.</h2><p class="section-intro" style="margin-top:24px;">A strong object does not need to announce itself. It earns attention through proportion, touch, and the small decisions that hold up over time.</p><a class="button ghost" href="airpods.html" style="margin-top:30px;">See the full audio study <span class="arrow">↗</span></a></div>
-        <div class="editorial-visual reveal delay-1"><img src="assets/brobex-logo.png" alt="BROBEX logo visual system" loading="lazy"><span class="detail-label">BROBEX / VISUAL SYSTEM</span></div>
+    <!-- PRODUCT DETAIL SECTION -->
+    <section class="section dark-band" id="product-details">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Core Architecture / 02</span>
+            <h2 class="section-title">Product Detail Section.</h2>
+          </div>
+          <p class="section-intro">
+            Conceptual physical characteristics engineered for long-session listening and tactile satisfaction.
+          </p>
+        </div>
+
+        <div class="detail-grid">
+          <article class="detail-card reveal">
+            <div class="detail-num">01</div>
+            <h3>FORM</h3>
+            <p>Sculpted acoustic housing with balanced internal chamber volumes and zero unneeded decorative trim.</p>
+          </article>
+          <article class="detail-card reveal delay-1">
+            <div class="detail-num">02</div>
+            <h3>FIT</h3>
+            <p>Anatomically distributed contact geometry designed to reduce ear canal fatigue over extended hours.</p>
+          </article>
+          <article class="detail-card reveal delay-2">
+            <div class="detail-num">03</div>
+            <h3>FIELD</h3>
+            <p>Custom micro-perforated acoustic mesh engineered to deliver expansive 3D audio staging.</p>
+          </article>
+          <article class="detail-card reveal">
+            <div class="detail-num">04</div>
+            <h3>CONTROL</h3>
+            <p>Capacitive touch and force sensors providing immediate tactile response without physical button wear.</p>
+          </article>
+          <article class="detail-card reveal delay-1">
+            <div class="detail-num">05</div>
+            <h3>CONNECTION</h3>
+            <p>Dual-channel low-latency wireless pipeline providing instant pairing and seamless device handoff.</p>
+          </article>
+          <article class="detail-card reveal delay-2">
+            <div class="detail-num">06</div>
+            <h3>CHARGE</h3>
+            <p>High-efficiency magnetic inductive contact charging with optimized battery lifecycle protection.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-shell"><div class="section-head reveal"><div><span class="eyebrow">The BROBEX standard</span><h2 class="section-title">Less noise.<br>More intent.</h2></div><p class="section-intro">The same discipline applies across audio, device care, and digital work: understand the core function, then remove everything that gets in the way.</p></div>
-        <div class="feature-grid"><article class="feature-card reveal"><span class="feature-icon">01 / CLARITY</span><h3>Focused by design</h3><p>Calm interfaces, clear products, and systems that stay out of the way.</p></article><article class="feature-card reveal delay-1"><span class="feature-icon">02 / CRAFT</span><h3>Details with purpose</h3><p>Material, motion, and language treated as part of the same experience.</p></article><article class="feature-card reveal delay-2"><span class="feature-icon">03 / SPEED</span><h3>Made for real devices</h3><p>Responsive work that respects attention, bandwidth, and the last screen in the room.</p></article><article class="feature-card reveal delay-3"><span class="feature-icon">04 / CARE</span><h3>Here when needed</h3><p>Practical repair expertise for the devices that run your day.</p></article></div>
+    <!-- INTERACTIVE "HOW IT FEELS" SECTION -->
+    <section class="section" id="how-it-feels">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Sensory Experience / 03</span>
+            <h2 class="section-title">How It Feels.</h2>
+          </div>
+          <p class="section-intro">
+            Select a state to explore how BROBEX Audio adjusts the balance between user awareness and total isolation.
+          </p>
+        </div>
+
+        <div class="feels-container reveal">
+          <div class="feels-tabs" role="tablist" aria-label="How it feels selector">
+            <button class="feels-tab-btn active" data-feel="immersion" role="tab" aria-selected="true" type="button">Immersion</button>
+            <button class="feels-tab-btn" data-feel="awareness" role="tab" aria-selected="false" type="button">Awareness</button>
+            <button class="feels-tab-btn" data-feel="focus" role="tab" aria-selected="false" type="button">Focus</button>
+            <button class="feels-tab-btn" data-feel="comfort" role="tab" aria-selected="false" type="button">Comfort</button>
+          </div>
+
+          <div class="feels-display" id="feels-display-card">
+            <div class="feels-badge" id="feels-badge">STATE: TOTAL ISOLATION</div>
+            <h3 id="feels-title">Immersion</h3>
+            <p id="feels-desc">
+              Background noise collapses. Sound takes on physical depth, surrounding you with studio precision and unfiltered dynamic range.
+            </p>
+            <div class="feels-metric">
+              <span class="feels-metric-label">Acoustic Isolation</span>
+              <div class="feels-bar"><span id="feels-bar-fill" style="width: 95%;"></span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section dark-band" id="repair-estimator">
+    <!-- BROBEX STANDARD SECTION -->
+    <section class="section dark-band" id="brobex-standard">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Guiding Principles / 04</span>
+            <h2 class="section-title">The BROBEX Standard.</h2>
+          </div>
+          <p class="section-intro">
+            A cohesive discipline governing physical design, hardware repair, and frontend development.
+          </p>
+        </div>
+
+        <div class="standard-editorial-grid">
+          <div class="standard-item reveal">
+            <div class="standard-header"><span class="standard-code">01</span> <h3>CLARITY</h3></div>
+            <p>Calm, distraction-free interfaces and hardware layouts that prioritize clear intent above noise.</p>
+          </div>
+          <div class="standard-item reveal delay-1">
+            <div class="standard-header"><span class="standard-code">02</span> <h3>CRAFT</h3></div>
+            <p>Material harmony, exacting tolerances, and thoughtful physical interaction on every surface.</p>
+          </div>
+          <div class="standard-item reveal delay-2">
+            <div class="standard-header"><span class="standard-code">03</span> <h3>SPEED</h3></div>
+            <p>Lightweight frontends, zero unnecessary dependencies, and instantaneous response across devices.</p>
+          </div>
+          <div class="standard-item reveal">
+            <div class="standard-header"><span class="standard-code">04</span> <h3>CARE</h3></div>
+            <p>Dedicated diagnostic expertise extending the lifespan of essential everyday technology.</p>
+          </div>
+          <div class="standard-item reveal delay-1">
+            <div class="standard-header"><span class="standard-code">05</span> <h3>PRECISION</h3></div>
+            <p>Strict attention to visual alignment, frequency accuracy, and code performance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES PREVIEW -->
+    <section class="section" id="services">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Capabilities / 05</span>
+            <h2 class="section-title">Services Preview.</h2>
+          </div>
+          <p class="section-intro">
+            From custom interactive digital architecture to precision mobile device repair.
+          </p>
+        </div>
+
+        <div class="services-grid-luxe">
+          <a class="service-card-luxe reveal" href="work.html">
+            <div class="service-tag">DIGITAL WORK</div>
+            <h3>Digital Experiences</h3>
+            <p>High-end interactive web platforms crafted with fluid motion and tailored layout typography.</p>
+            <span class="service-link">View Work ↗</span>
+          </a>
+          <a class="service-card-luxe reveal delay-1" href="work.html">
+            <div class="service-tag">DEVELOPMENT</div>
+            <h3>Web Development</h3>
+            <p>Performance-first codebases with zero bloat, accessibility compliance, and robust responsiveness.</p>
+            <span class="service-link">Explore Systems ↗</span>
+          </a>
+          <a class="service-card-luxe reveal delay-2" href="work.html">
+            <div class="service-tag">FRONTEND</div>
+            <h3>Interactive Frontend</h3>
+            <p>Custom WebGL, Canvas, and CSS animation systems built for 60fps interaction.</p>
+            <span class="service-link">View Projects ↗</span>
+          </a>
+          <a class="service-card-luxe reveal delay-3" href="repair.html">
+            <div class="service-tag">HARDWARE CARE</div>
+            <h3>Mobile Repair</h3>
+            <p>Expert hardware component replacement, battery service, and screen restoration.</p>
+            <span class="service-link">Estimator Studio ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK PREVIEW -->
+    <section class="section dark-band" id="work-preview">
+      <div class="section-shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Showcase / 06</span>
+            <h2 class="section-title">Work Preview.</h2>
+          </div>
+          <a class="button ghost" href="work.html">Explore All Work <span class="arrow">↗</span></a>
+        </div>
+
+        <div class="work-showcase-grid">
+          <a class="work-card-luxe reveal" href="airpods.html">
+            <div class="work-content">
+              <div class="tags"><span class="tag">Product Study</span><span class="tag">155 Frames</span></div>
+              <h3>BROBEX Audio 001</h3>
+              <p>A flagship 3D audio hardware study and scroll-driven presentation experience.</p>
+            </div>
+          </a>
+          <a class="work-card-luxe reveal delay-1" href="repair.html">
+            <div class="work-content">
+              <div class="tags"><span class="tag">Hardware Repair</span><span class="tag">Diagnostics</span></div>
+              <h3>Mobile Repair Studio</h3>
+              <p>An interactive service platform for device assessment and transparent repair estimates.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPAIR ESTIMATOR PREVIEW -->
+    <section class="section" id="repair-estimator">
       <div class="section-shell split">
-        <div class="reveal"><span class="eyebrow">Device care / 03</span><h2 class="section-title">A useful answer before a service visit.</h2><p class="section-intro" style="margin-top:24px;">Use the quick estimator for an indicative range. Final pricing and timing depend on inspection.</p></div>
-        <div class="estimator-card reveal delay-1"><form data-estimator-form novalidate><div class="form-row"><div class="field"><label for="home-est-device">Device family</label><select id="home-est-device" name="device" required><option value="">Choose device</option><option value="iphone">iPhone series</option><option value="android">Android flagship</option><option value="tablet">Tablet</option></select><span class="field-error" data-error-for="device"></span></div><div class="field"><label for="home-est-issue">Primary issue</label><select id="home-est-issue" name="issue" required><option value="">Choose issue</option><option value="screen">Display replacement</option><option value="battery">Battery replacement</option><option value="charging">Charging issue</option><option value="water">Water damage</option></select><span class="field-error" data-error-for="issue"></span></div></div><button class="button primary" type="submit">Generate indicative estimate <span class="arrow">↗</span></button></form><div id="estimate-result" class="estimate-result-box" role="status" aria-live="polite" tabindex="-1"><div><span class="estimate-label">Indicative range</span><h3 id="estimate-price" class="estimate-price"></h3></div><a class="button ghost" href="repair.html">See repair studio <span class="arrow">↗</span></a></div></div>
+        <div class="reveal">
+          <span class="eyebrow">Device Care / 07</span>
+          <h2 class="section-title">Quick Repair Estimator.</h2>
+          <p class="section-intro" style="margin-top:24px;">
+            Select your device and issue type for an instant indicative estimate before scheduling service.
+          </p>
+        </div>
+
+        <div class="estimator-card reveal delay-1">
+          <form data-estimator-form novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="home-est-device">Device Family</label>
+                <select id="home-est-device" name="device" required>
+                  <option value="">Select Device</option>
+                  <option value="iphone">iPhone Series</option>
+                  <option value="android">Android Flagship</option>
+                  <option value="tablet">Tablet / iPad</option>
+                </select>
+                <span class="field-error" data-error-for="device"></span>
+              </div>
+              <div class="field">
+                <label for="home-est-issue">Primary Issue</label>
+                <select id="home-est-issue" name="issue" required>
+                  <option value="">Select Issue</option>
+                  <option value="screen">Display / Glass</option>
+                  <option value="battery">Battery Life</option>
+                  <option value="charging">Charging Port</option>
+                  <option value="water">Water Assessment</option>
+                </select>
+                <span class="field-error" data-error-for="issue"></span>
+              </div>
+            </div>
+            <button class="button primary" type="submit">Calculate Estimate <span class="arrow">↗</span></button>
+          </form>
+
+          <div id="estimate-result" class="estimate-result-box" role="status" aria-live="polite" tabindex="-1">
+            <div>
+              <span class="estimate-label">Indicative Range</span>
+              <h3 id="estimate-price" class="estimate-price"></h3>
+            </div>
+            <a class="button ghost" href="repair.html">Full Repair Page <span class="arrow">↗</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section dark-band">
-      <div class="section-shell split"><div class="reveal"><span class="eyebrow">Beyond the product</span><h2 class="section-title">Technology should give you room to be a person.</h2></div><div class="reveal delay-1"><p class="section-intro">Explore BROBEX Audio, estimate a repair, or bring a digital idea into the studio. The work is different; the standard stays the same.</p><div class="hero-actions"><a class="button primary" href="repair.html">Estimate a repair <span class="arrow">↗</span></a><a class="button ghost" href="work.html">View studio work <span class="arrow">↗</span></a></div></div></div>
+    <!-- PREMIUM FINAL CTA -->
+    <section class="section dark-band" id="hero-cta">
+      <div class="section-shell">
+        <div class="cta-cinematic-box reveal">
+          <span class="eyebrow">Start a Collaboration</span>
+          <h2 class="cta-title">Have something<br>worth building?</h2>
+          <p class="cta-desc">
+            Whether you are bringing a digital product to life or require expert hardware restoration, BROBEX delivers precision craft.
+          </p>
+          <div class="cta-button-group">
+            <a class="button primary" href="contact.html">Start a Project <span class="arrow">↗</span></a>
+            <a class="button ghost" href="about.html">Explore BROBEX <span class="arrow">↗</span></a>
+          </div>
+        </div>
+      </div>
     </section>
+
   </main>
 
-  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><a class="brand-link" href="index.html"><img class="brand-logo small" src="assets/brobex-logo.png" alt="BROBEX logo"></a><p>Technology, refined. Audio, repair, and digital work with intent.</p></div><div><h3>Explore</h3><nav><a href="index.html">Home</a><a href="airpods.html">AirPods</a><a href="repair.html">Mobile repair</a></nav></div><div><h3>Studio</h3><nav><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div><div><h3>Reach out</h3><nav><a href="mailto:brobex.ffx@gmail.com">brobex.ffx@gmail.com</a><a href="https://www.instagram.com/codewithbrobex/" rel="noopener noreferrer">Instagram ↗</a></nav></div></div><div class="footer-bottom"><span>© <span data-year></span> BROBEX. All rights reserved.</span><span>Black / Silver / Neon.</span></div></footer>
-  <script src="js/navigation.js" defer></script><script src="js/scroll-animation.js" defer></script><script src="js/main.js" defer></script><script src="js/repair.js" defer></script><script src="js/animations.js" defer></script>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand-link" href="index.html">
+          <img class="brand-logo small" src="assets/brobex-logo.png" alt="BROBEX logo">
+        </a>
+        <p>Technology, refined. Audio, repair, and digital work built with intent.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="airpods.html">AirPods</a>
+          <a href="repair.html">Mobile Repair</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Studio</h3>
+        <nav>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Reach Out</h3>
+        <nav>
+          <a href="mailto:brobex.ffx@gmail.com">brobex.ffx@gmail.com</a>
+          <a href="https://www.instagram.com/codewithbrobex/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="footer-divider" aria-hidden="true"></div>
+    
+    <div class="footer-bottom">
+      <span>© <span data-year></span> BROBEX. All rights reserved.</span>
+      <span>Black / Silver / Neon.</span>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/scroll-animation.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/repair.js" defer></script>
+  <script src="js/animations.js" defer></script>
 </body>
 </html>

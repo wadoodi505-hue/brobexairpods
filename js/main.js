@@ -2,16 +2,8 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
   const header = document.querySelector(".site-header");
-  if (!document.querySelector("[data-scroll-progress]")) {
-    const scrollProgress = document.createElement("div");
-    scrollProgress.className = "global-scroll-progress";
-    scrollProgress.dataset.scrollProgress = "";
-    scrollProgress.setAttribute("aria-hidden", "true");
-    scrollProgress.innerHTML = "<span></span>";
-    document.body.prepend(scrollProgress);
-  }
-  let scrollTick = 0;
 
+  let scrollTick = 0;
   const updateScrollUI = () => {
     scrollTick = 0;
     header?.classList.toggle("scrolled", window.scrollY > 20);
@@ -22,83 +14,44 @@
     }
   };
 
-  const requestScrollUI = () => {
-    if (!scrollTick) scrollTick = window.requestAnimationFrame(updateScrollUI);
-  };
-
+  window.addEventListener("scroll", () => {
+    if (!scrollTick) scrollTick = requestAnimationFrame(updateScrollUI);
+  }, { passive: true });
   updateScrollUI();
-  window.addEventListener("scroll", requestScrollUI, { passive: true });
 
-  document.querySelectorAll("[data-year]").forEach((element) => {
-    element.textContent = String(new Date().getFullYear());
+  document.querySelectorAll("[data-year]").forEach((el) => {
+    el.textContent = String(new Date().getFullYear());
   });
 
+  // Reveal observer
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, instance) => {
+    const observer = new IntersectionObserver((entries, instance) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("is-visible");
         instance.unobserve(entry.target);
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    revealItems.forEach((item) => revealObserver.observe(item));
+    }, { threshold: 0.08 });
+    revealItems.forEach((item) => observer.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 
-  const wrapHeadingLetters = (element) => {
-    if (reduceMotion || element.dataset.lettersReady) return;
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
-      acceptNode: (node) => node.nodeValue.trim()
-        ? NodeFilter.FILTER_ACCEPT
-        : NodeFilter.FILTER_REJECT
-    });
-    const textNodes = [];
-    let currentNode;
-    while ((currentNode = walker.nextNode())) textNodes.push(currentNode);
-
-    let letterIndex = 0;
-    textNodes.forEach((node) => {
-      const fragment = document.createDocumentFragment();
-      node.nodeValue.split(/(\s+)/).forEach((word) => {
-        if (!word || /^\s+$/.test(word)) {
-          fragment.appendChild(document.createTextNode(word));
-          return;
-        }
-        const wordWrap = document.createElement("span");
-        wordWrap.className = "heading-word";
-        [...word].forEach((character) => {
-          const letter = document.createElement("span");
-          letter.className = "heading-letter";
-          letter.textContent = character;
-          letter.style.setProperty("--letter-delay", `${Math.min(letterIndex, 32) * 22}ms`);
-          wordWrap.appendChild(letter);
-          letterIndex += 1;
-        });
-        fragment.appendChild(wordWrap);
-      });
-      node.replaceWith(fragment);
-    });
-    element.classList.add("letter-heading");
-    element.dataset.lettersReady = "true";
-    requestAnimationFrame(() => element.classList.add("letters-visible"));
-  };
-
-  document.querySelectorAll(".sequence-copy h1, .page-hero h1, .section-title, .contact-aside h2, .quote")
-    .forEach(wrapHeadingLetters);
-
+  // Counter animations
   const animateCounters = () => {
     document.querySelectorAll("[data-counter]").forEach((element) => {
-      const target = Number(element.dataset.counterTarget || element.textContent || 0);
+      const target = Number(element.dataset.counterTarget || 0);
       if (!Number.isFinite(target) || element.dataset.counterReady) return;
       element.dataset.counterReady = "true";
+      
       if (reduceMotion) {
         element.textContent = String(target);
         return;
       }
+      
       const started = performance.now();
-      const duration = 1000;
+      const duration = 1200;
       const tick = (now) => {
         const progress = Math.min(1, (now - started) / duration);
         const eased = 1 - Math.pow(1 - progress, 3);
@@ -110,43 +63,61 @@
   };
 
   if ("IntersectionObserver" in window) {
-    const counterObserver = new IntersectionObserver((entries, instance) => {
+    const counterObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
         animateCounters();
-        instance.disconnect();
       }
-    }, { threshold: 0.25 });
+    }, { threshold: 0.2 });
     document.querySelectorAll("[data-counter]").forEach((item) => counterObserver.observe(item));
   } else {
     animateCounters();
   }
 
+  // PRODUCT INTERACTION LAB & LIVE CANVAS VISUALIZER
   const visualizer = document.getElementById("visualizer-canvas");
   if (visualizer) {
-    const context = visualizer.getContext("2d", { alpha: true, desynchronized: true });
+    const context = visualizer.getContext("2d", { alpha: true });
     if (context) {
       const profiles = {
-        studio: { color: "#b7ff3c", amplitude: 0.75, density: 1.4, title: "Active: Pure studio reference", design: "Concept profile" },
-        quiet: { color: "#d8dad5", amplitude: 0.38, density: 0.8, title: "Active: Quiet room", design: "Concept profile" },
-        spatial: { color: "#8fdc31", amplitude: 1.05, density: 2.1, title: "Active: Spatial field", design: "Concept profile" }
+        studio: {
+          color: "#b7ff3c", amplitude: 0.75, density: 1.4,
+          title: "Active: Studio Reference",
+          desc: "Pure studio reference curve with flat response across 20 Hz – 24 kHz.",
+          sr: "96 kHz / 24-bit", lat: "12 ms", mode: "Reference"
+        },
+        quiet: {
+          color: "#d8dad5", amplitude: 0.35, density: 0.8,
+          title: "Active: Quiet Mode",
+          desc: "Attenuates low-frequency ambient rumble while preserving vocal clarity.",
+          sr: "96 kHz / 24-bit", lat: "8 ms", mode: "Quiet Room"
+        },
+        spatial: {
+          color: "#8fdc31", amplitude: 1.1, density: 2.2,
+          title: "Active: Spatial Field",
+          desc: "Dynamic spatial expansion algorithm rendering a three-dimensional acoustic soundstage.",
+          sr: "192 kHz / 24-bit", lat: "15 ms", mode: "3D Spatial"
+        },
+        focus: {
+          color: "#e2ff70", amplitude: 0.6, density: 1.8,
+          title: "Active: Focus Profile",
+          desc: "Emphasizes speech spectrum intelligibility while dampening persistent background noise.",
+          sr: "96 kHz / 24-bit", lat: "10 ms", mode: "Voice Focus"
+        }
       };
-      let profile = profiles.studio;
+
+      let current = profiles.studio;
       let frame = 0;
       let visible = true;
       let running = true;
-      let resizeFrame = 0;
 
       const resize = () => {
-        resizeFrame = 0;
         const rect = visualizer.getBoundingClientRect();
         const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
         visualizer.width = Math.max(1, Math.floor(rect.width * dpr));
         visualizer.height = Math.max(1, Math.floor(rect.height * dpr));
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
       };
-      const requestResize = () => {
-        if (!resizeFrame) resizeFrame = requestAnimationFrame(resize);
-      };
+
       const draw = () => {
         if (!visible) {
           running = false;
@@ -154,36 +125,44 @@
         }
         const width = visualizer.clientWidth;
         const height = visualizer.clientHeight;
+
         context.clearRect(0, 0, width, height);
-        context.strokeStyle = "rgba(255,255,255,.07)";
+
+        // Grid lines
+        context.strokeStyle = "rgba(255,255,255,.05)";
         context.lineWidth = 1;
-        for (let y = 0; y < height; y += 42) {
+        for (let y = 0; y < height; y += 40) {
           context.beginPath();
           context.moveTo(0, y + 0.5);
           context.lineTo(width, y + 0.5);
           context.stroke();
         }
+
+        // Primary waveform
         context.beginPath();
         for (let x = 0; x <= width; x += 3) {
           const progress = x / Math.max(width, 1);
-          const wave = Math.sin(progress * 16 * profile.density + frame * 0.025) * 16 * profile.amplitude;
-          const harmonic = Math.sin(progress * 43 * profile.density - frame * 0.04) * 5 * profile.amplitude;
+          const wave = Math.sin(progress * 16 * current.density + frame * 0.03) * 18 * current.amplitude;
+          const harmonic = Math.sin(progress * 40 * current.density - frame * 0.04) * 6 * current.amplitude;
           const y = height / 2 + wave + harmonic;
           x === 0 ? context.moveTo(x, y) : context.lineTo(x, y);
         }
-        context.strokeStyle = profile.color;
-        context.shadowColor = profile.color;
-        context.shadowBlur = 14;
-        context.lineWidth = 1.8;
+
+        context.strokeStyle = current.color;
+        context.shadowColor = current.color;
+        context.shadowBlur = 12;
+        context.lineWidth = 2;
         context.stroke();
         context.shadowBlur = 0;
+
         if (!reduceMotion) frame += 1;
         requestAnimationFrame(draw);
       };
 
       resize();
       draw();
-      window.addEventListener("resize", requestResize, { passive: true });
+      window.addEventListener("resize", resize, { passive: true });
+
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(([entry]) => {
           visible = entry.isIntersecting;
@@ -194,36 +173,87 @@
         }, { threshold: 0.05 }).observe(visualizer);
       }
 
+      // Tab switcher
       document.querySelectorAll("[data-profile]").forEach((tab) => {
         tab.addEventListener("click", () => {
-          profile = profiles[tab.dataset.profile] || profiles.studio;
-          document.querySelectorAll("[data-profile]").forEach((item) => {
-            const active = item === tab;
-            item.classList.toggle("active", active);
-            item.setAttribute("aria-selected", String(active));
+          const key = tab.dataset.profile;
+          if (!profiles[key]) return;
+          current = profiles[key];
+
+          document.querySelectorAll("[data-profile]").forEach((btn) => {
+            const active = btn === tab;
+            btn.classList.toggle("active", active);
+            btn.setAttribute("aria-selected", String(active));
           });
-          const title = document.getElementById("profile-title");
-          const status = document.getElementById("profile-status");
-          if (title) title.textContent = profile.title;
-          if (status) status.textContent = profile.design;
+
+          document.getElementById("profile-title").textContent = current.title;
+          document.getElementById("profile-explanation").textContent = current.desc;
+          document.getElementById("metric-sr").textContent = current.sr;
+          document.getElementById("metric-lat").textContent = current.lat;
+          document.getElementById("metric-mode").textContent = current.mode;
         });
       });
     }
   }
 
+  // INTERACTIVE "HOW IT FEELS" SECTION
+  const feelsData = {
+    immersion: {
+      badge: "STATE: TOTAL ISOLATION",
+      title: "Immersion",
+      desc: "Background noise collapses. Sound takes on physical depth, surrounding you with studio precision and unfiltered dynamic range.",
+      fill: "95%"
+    },
+    awareness: {
+      badge: "STATE: TRANSPARENT PASS-THROUGH",
+      title: "Awareness",
+      desc: "Microphones stream surrounding environmental audio in real time with near-zero acoustic phase offset.",
+      fill: "40%"
+    },
+    focus: {
+      badge: "STATE: SPEECH ENHANCEMENT",
+      title: "Focus",
+      desc: "Identifies and isolates human voice frequencies while dampening mechanical background noise.",
+      fill: "80%"
+    },
+    comfort: {
+      badge: "STATE: ALL-DAY ERGONOMICS",
+      title: "Comfort",
+      desc: "Pressure-equalizing acoustic vents prevent occlusion effect, creating an effortless listening experience.",
+      fill: "20%"
+    }
+  };
+
+  document.querySelectorAll("[data-feel]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const key = btn.dataset.feel;
+      const data = feelsData[key];
+      if (!data) return;
+
+      document.querySelectorAll("[data-feel]").forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", String(active));
+      });
+
+      const badge = document.getElementById("feels-badge");
+      const title = document.getElementById("feels-title");
+      const desc = document.getElementById("feels-desc");
+      const bar = document.getElementById("feels-bar-fill");
+
+      if (badge) badge.textContent = data.badge;
+      if (title) title.textContent = data.title;
+      if (desc) desc.textContent = data.desc;
+      if (bar) bar.style.width = data.fill;
+    });
+  });
+
   if (finePointer && !reduceMotion) {
-    let pointerFrame = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-    const updatePointer = () => {
-      pointerFrame = 0;
-      document.documentElement.style.setProperty("--pointer-x", pointerX.toFixed(3));
-      document.documentElement.style.setProperty("--pointer-y", pointerY.toFixed(3));
-    };
-    window.addEventListener("pointermove", (event) => {
-      pointerX = event.clientX / Math.max(window.innerWidth, 1) - 0.5;
-      pointerY = event.clientY / Math.max(window.innerHeight, 1) - 0.5;
-      if (!pointerFrame) pointerFrame = requestAnimationFrame(updatePointer);
+    window.addEventListener("pointermove", (e) => {
+      const x = (e.clientX / Math.max(window.innerWidth, 1) - 0.5);
+      const y = (e.clientY / Math.max(window.innerHeight, 1) - 0.5);
+      document.documentElement.style.setProperty("--pointer-x", x.toFixed(3));
+      document.documentElement.style.setProperty("--pointer-y", y.toFixed(3));
     }, { passive: true });
   }
 })();
