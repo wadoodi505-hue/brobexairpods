@@ -1,21 +1,576 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact BROBEX — Start a conversation</title>
-  <meta name="description" content="Contact BROBEX about audio, mobile repair, websites, product experiences, and digital work.">
-  <meta property="og:type" content="website"><meta property="og:title" content="Contact BROBEX"><meta property="og:description" content="Start with the rough idea, the repair question, or the product direction."><meta property="og:image" content="assets/brobex-logo.png"><meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/brobex-logo.png" type="image/png"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="css/animations.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact BROBEX — Project Inquiry & Engineering</title>
+  <meta name="description" content="Start a project inquiry with BROBEX. Interactive intake for web development, interactive experiences, web applications, and mobile repair.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact BROBEX — Let's build something exceptional">
+  <meta property="og:description" content="Map out your project stage, timeline, budget, and scope directly with BROBEX.">
+  <meta property="og:image" content="assets/brobex-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/brobex-logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
+  <div class="global-scroll-progress" data-scroll-progress><span></span></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="nav-shell"><a class="brand-link" href="index.html" aria-label="BROBEX home"><img class="brand-logo" src="assets/brobex-logo.png" alt="BROBEX logo"></a><nav class="primary-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="airpods.html">AirPods</a><a href="repair.html">Mobile Repair</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a></nav><a class="nav-cta" href="mailto:brobex.ffx@gmail.com">Email BROBEX <span class="arrow">↗</span></a><button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button></div></header>
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true"><nav aria-label="Mobile navigation"><a href="index.html">Home</a><a href="airpods.html">AirPods</a><a href="repair.html">Mobile Repair</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><a class="button primary" href="mailto:brobex.ffx@gmail.com">Email BROBEX ↗</a></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand-link" href="index.html" aria-label="BROBEX home">
+        <img class="brand-logo" src="assets/brobex-logo.png" alt="BROBEX logo">
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="airpods.html">AirPods</a>
+        <a href="repair.html">Mobile Repair</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <a class="nav-cta" href="mailto:brobex.ffx@gmail.com">Email BROBEX <span class="arrow">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="airpods.html">AirPods</a>
+      <a href="repair.html">Mobile Repair</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="button primary" href="mailto:brobex.ffx@gmail.com">Email BROBEX ↗</a>
+  </div>
+
   <main id="main-content" class="page-main">
-    <section class="page-hero"><div class="page-hero-inner"><span class="eyebrow">OPEN CHANNEL / 005</span><h1>Let’s build something exceptional.</h1><p>A repair question, a product idea, or a website that needs a clearer point of view. The first message can be rough.</p></div></section>
-    <section class="section"><div class="section-shell form-shell"><div class="contact-aside reveal"><span class="eyebrow">Direct line</span><h2>One good conversation is enough to start.</h2><p class="section-intro">Email BROBEX directly, or use the form to shape the thought before you send it.</p><div class="contact-links"><a class="contact-link" href="mailto:brobex.ffx@gmail.com"><span>brobex.ffx@gmail.com</span><span>↗</span></a><a class="contact-link" href="https://www.instagram.com/codewithbrobex/" rel="noopener noreferrer"><span>@codewithbrobex</span><span>↗</span></a></div></div><div class="form-card reveal delay-1"><form data-contact-form novalidate><div class="form-row"><div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required><span class="field-error" data-error-for="name"></span></div><div class="field"><label for="contact-reply">Email or phone</label><input id="contact-reply" name="reply" required placeholder="How should we reply?"><span class="field-error" data-error-for="reply"></span></div></div><div class="field"><label for="inquiry">Inquiry type</label><select id="inquiry" name="inquiry" required><option value="">Choose a path</option><option>Mobile repair</option><option>BROBEX Audio</option><option>Web or product work</option><option>Something else</option></select><span class="field-error" data-error-for="inquiry"></span></div><div class="field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" required placeholder="What would you like to make, fix, or understand?"></textarea><span class="field-error" data-error-for="message"></span></div><button class="button primary" type="submit">Validate inquiry <span class="arrow">↗</span></button><p class="disclaimer">This frontend form does not send or store data. After validation, email brobex.ffx@gmail.com to continue.</p><div class="form-status" role="status" aria-live="polite"></div></form></div></div></section>
+    <!-- Hero Section -->
+    <section class="contact-hero">
+      <div class="contact-hero-glow" aria-hidden="true"></div>
+      <div class="section-shell">
+        <div class="status-badge-wrapper reveal">
+          <span class="status-pill">
+            <span class="status-dot"></span>
+            <span>Start a conversation</span>
+          </span>
+          <span class="channel-tag">OPEN CHANNEL / 005</span>
+        </div>
+        
+        <h1 class="contact-hero-title reveal delay-1">Let's build something exceptional.</h1>
+        <p class="contact-hero-desc reveal delay-2">
+          Whether you have a fully rendered design ready to code, a complex web application concept, or a mobile device in need of repair—use this intake process to shape your project goals.
+        </p>
+
+        <!-- Direct Contact Cards -->
+        <div class="hero-contact-strip reveal delay-3">
+          <a href="mailto:brobex.ffx@gmail.com" class="direct-contact-card">
+            <span class="card-label">Direct Email</span>
+            <span class="card-value">brobex.ffx@gmail.com ↗</span>
+          </a>
+          <a href="https://www.instagram.com/codewithbrobex/" target="_blank" rel="noopener noreferrer" class="direct-contact-card">
+            <span class="card-label">Instagram</span>
+            <span class="card-value">@codewithbrobex ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Intake Form Section -->
+    <section class="section intake-section">
+      <div class="section-shell">
+        <div class="intake-container reveal">
+          
+          <!-- Stepper Header -->
+          <div class="intake-header">
+            <div class="step-progress-meta">
+              <span class="step-badge" id="step-badge">STEP 01 / 05</span>
+              <span class="step-title-display" id="step-title-display">What do you need?</span>
+            </div>
+
+            <div class="progress-bar-track" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="intake-progress-bar">
+              <div class="progress-bar-fill" id="progress-bar-fill" style="width: 20%;"></div>
+            </div>
+
+            <ol class="step-indicators" id="step-indicators" aria-label="Form progress">
+              <li class="step-node active" data-step="1">
+                <button type="button" aria-label="Jump to Step 1: Need">01</button>
+              </li>
+              <li class="step-node" data-step="2">
+                <button type="button" aria-label="Jump to Step 2: Stage">02</button>
+              </li>
+              <li class="step-node" data-step="3">
+                <button type="button" aria-label="Jump to Step 3: Timeline">03</button>
+              </li>
+              <li class="step-node" data-step="4">
+                <button type="button" aria-label="Jump to Step 4: Budget">04</button>
+              </li>
+              <li class="step-node" data-step="5">
+                <button type="button" aria-label="Jump to Step 5: Details and Review">05</button>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Multi-Step Intake Form -->
+          <form id="intake-form" class="intake-form" novalidate>
+            
+            <!-- STEP 01: What do you need? -->
+            <div class="form-step active" data-step-panel="1" role="region" aria-labelledby="step-1-heading">
+              <h2 id="step-1-heading" class="step-heading">What do you need?</h2>
+              <p class="step-subheading">Select the primary service that aligns with your request.</p>
+              
+              <div class="tile-grid" role="radiogroup" aria-labelledby="step-1-heading">
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Website" required>
+                  <span class="tile-content">
+                    <span class="tile-title">Website</span>
+                    <span class="tile-desc">High-performance brand, portfolio, or landing site.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Web application">
+                  <span class="tile-content">
+                    <span class="tile-title">Web application</span>
+                    <span class="tile-desc">Complex React, Next.js, or full-stack software application.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Frontend development">
+                  <span class="tile-content">
+                    <span class="tile-title">Frontend development</span>
+                    <span class="tile-desc">UI implementation, modern layout build, or refactoring.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Interactive experience">
+                  <span class="tile-content">
+                    <span class="tile-title">Interactive experience</span>
+                    <span class="tile-desc">Three.js, GSAP, WebGL, or animated web presentation.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Game">
+                  <span class="tile-content">
+                    <span class="tile-title">Game</span>
+                    <span class="tile-desc">Browser-based web game or canvas application.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Mobile repair">
+                  <span class="tile-content">
+                    <span class="tile-title">Mobile repair</span>
+                    <span class="tile-desc">Hardware repair, screen replacement, or diagnostics.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="need" value="Other">
+                  <span class="tile-content">
+                    <span class="tile-title">Other</span>
+                    <span class="tile-desc">Custom consultation or specialized technology scope.</span>
+                  </span>
+                </label>
+              </div>
+              <span class="inline-error" id="error-step-1" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- STEP 02: Project Stage -->
+            <div class="form-step" data-step-panel="2" role="region" aria-labelledby="step-2-heading">
+              <h2 id="step-2-heading" class="step-heading">What is the project stage?</h2>
+              <p class="step-subheading">Help us understand where you currently stand in development.</p>
+
+              <div class="tile-grid" role="radiogroup" aria-labelledby="step-2-heading">
+                <label class="tile-card">
+                  <input type="radio" name="stage" value="Idea" required>
+                  <span class="tile-content">
+                    <span class="tile-title">Idea</span>
+                    <span class="tile-desc">Early conceptual phase, scoping required.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="stage" value="Design ready">
+                  <span class="tile-content">
+                    <span class="tile-title">Design ready</span>
+                    <span class="tile-desc">Figma or design assets complete and ready for code.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="stage" value="Partially built">
+                  <span class="tile-content">
+                    <span class="tile-title">Partially built</span>
+                    <span class="tile-desc">Codebase in progress, needing feature development.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="stage" value="Existing website">
+                  <span class="tile-content">
+                    <span class="tile-title">Existing website</span>
+                    <span class="tile-desc">Live production site requiring updates or overhaul.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="stage" value="Need improvement">
+                  <span class="tile-content">
+                    <span class="tile-title">Need improvement</span>
+                    <span class="tile-desc">Optimization, bug fixes, or performance tuning.</span>
+                  </span>
+                </label>
+              </div>
+              <span class="inline-error" id="error-step-2" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- STEP 03: Timeline -->
+            <div class="form-step" data-step-panel="3" role="region" aria-labelledby="step-3-heading">
+              <h2 id="step-3-heading" class="step-heading">Timeline</h2>
+              <p class="step-subheading">When are you hoping to launch or complete this project?</p>
+
+              <div class="tile-grid" role="radiogroup" aria-labelledby="step-3-heading">
+                <label class="tile-card">
+                  <input type="radio" name="timeline" value="Flexible" required>
+                  <span class="tile-content">
+                    <span class="tile-title">Flexible</span>
+                    <span class="tile-desc">No strict deadline; quality is the main priority.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="timeline" value="1–2 weeks">
+                  <span class="tile-content">
+                    <span class="tile-title">1–2 weeks</span>
+                    <span class="tile-desc">Rapid turnaround or immediate priority.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="timeline" value="2–4 weeks">
+                  <span class="tile-content">
+                    <span class="tile-title">2–4 weeks</span>
+                    <span class="tile-desc">Standard project sprint timeframe.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="timeline" value="1–2 months">
+                  <span class="tile-content">
+                    <span class="tile-title">1–2 months</span>
+                    <span class="tile-desc">Comprehensive web build or application phase.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="timeline" value="Discuss">
+                  <span class="tile-content">
+                    <span class="tile-title">Discuss</span>
+                    <span class="tile-desc">Timeline dependent on detailed scoping.</span>
+                  </span>
+                </label>
+              </div>
+              <span class="inline-error" id="error-step-3" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- STEP 04: Budget -->
+            <div class="form-step" data-step-panel="4" role="region" aria-labelledby="step-4-heading">
+              <h2 id="step-4-heading" class="step-heading">Estimated Budget</h2>
+              <p class="step-subheading">Ranges serve as neutral conversation starters rather than fixed quotes.</p>
+
+              <div class="tile-grid" role="radiogroup" aria-labelledby="step-4-heading">
+                <label class="tile-card">
+                  <input type="radio" name="budget" value="Starter / Flexible (< $1,000)" required>
+                  <span class="tile-content">
+                    <span class="tile-title">Starter / Flexible</span>
+                    <span class="tile-desc">Focused landing page or minor development service.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="budget" value="Standard ($1,000 – $2,500)">
+                  <span class="tile-content">
+                    <span class="tile-title">Standard</span>
+                    <span class="tile-desc">Custom web development or multi-page build.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="budget" value="Core Build ($2,500 – $5,000)">
+                  <span class="tile-content">
+                    <span class="tile-title">Core Build</span>
+                    <span class="tile-desc">Full web application, animation integration, or custom store.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="budget" value="Enterprise / Premium ($5,000+)">
+                  <span class="tile-content">
+                    <span class="tile-title">Enterprise / Premium</span>
+                    <span class="tile-desc">End-to-end product development or interactive experience.</span>
+                  </span>
+                </label>
+
+                <label class="tile-card">
+                  <input type="radio" name="budget" value="To be discussed">
+                  <span class="tile-content">
+                    <span class="tile-title">To be discussed</span>
+                    <span class="tile-desc">Prefer to review requirement options during consultation.</span>
+                  </span>
+                </label>
+              </div>
+              <span class="inline-error" id="error-step-4" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- STEP 05: Project details & Summary Panel -->
+            <div class="form-step" data-step-panel="5" role="region" aria-labelledby="step-5-heading">
+              <h2 id="step-5-heading" class="step-heading">Project Details</h2>
+              <p class="step-subheading">Provide your contact info and message to complete the inquiry summary.</p>
+
+              <!-- Summary Panel -->
+              <div class="summary-panel" aria-label="Inquiry summary review">
+                <div class="summary-header">
+                  <h3>Inquiry Overview</h3>
+                  <span class="summary-hint">Review choices or click any step to edit</span>
+                </div>
+                
+                <div class="summary-grid">
+                  <div class="summary-item">
+                    <span class="summary-label">Project Type:</span>
+                    <span class="summary-value" id="summary-type">Not selected</span>
+                    <button type="button" class="summary-edit-btn" data-goto-step="1" aria-label="Edit project type">Edit</button>
+                  </div>
+
+                  <div class="summary-item">
+                    <span class="summary-label">Stage:</span>
+                    <span class="summary-value" id="summary-stage">Not selected</span>
+                    <button type="button" class="summary-edit-btn" data-goto-step="2" aria-label="Edit project stage">Edit</button>
+                  </div>
+
+                  <div class="summary-item">
+                    <span class="summary-label">Timeline:</span>
+                    <span class="summary-value" id="summary-timeline">Not selected</span>
+                    <button type="button" class="summary-edit-btn" data-goto-step="3" aria-label="Edit timeline">Edit</button>
+                  </div>
+
+                  <div class="summary-item">
+                    <span class="summary-label">Budget:</span>
+                    <span class="summary-value" id="summary-budget">Not selected</span>
+                    <button type="button" class="summary-edit-btn" data-goto-step="4" aria-label="Edit budget">Edit</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input Fields -->
+              <div class="fields-group">
+                <div class="form-row">
+                  <div class="field">
+                    <label for="contact-name">Your Name <span class="required-star">*</span></label>
+                    <input id="contact-name" name="name" autocomplete="name" required placeholder="e.g. Alex Mercer">
+                    <span class="field-error" id="error-name" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field">
+                    <label for="contact-email">Your Email Address <span class="required-star">*</span></label>
+                    <input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="alex@example.com">
+                    <span class="field-error" id="error-email" role="alert" aria-live="polite"></span>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="contact-message">Project Description / Notes <span class="required-star">*</span></label>
+                  <textarea id="contact-message" name="message" required rows="4" placeholder="Briefly describe what you'd like to build, fix, or achieve..."></textarea>
+                  <span class="field-error" id="error-message" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Navigation Footer -->
+            <div class="intake-footer">
+              <button type="button" class="button ghost" id="prev-btn" disabled>
+                <span>← Previous</span>
+              </button>
+
+              <div class="footer-actions">
+                <button type="button" class="button primary" id="next-btn">
+                  <span>Continue Step 02 →</span>
+                </button>
+                <button type="submit" class="button primary" id="submit-btn" style="display: none;">
+                  <span>Generate Inquiry Summary <span class="arrow">↗</span></span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- SUCCESS STATE CONFIRMATION SCREEN -->
+          <div class="success-screen" id="success-screen" style="display: none;" role="region" aria-live="polite">
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <h2 class="success-title">Inquiry Prepared</h2>
+            <p class="success-desc">
+              Your inquiry summary has been generated. BROBEX processes direct communications via email, keeping your contact submission browser-native with zero server tracking.
+            </p>
+
+            <div class="success-recap">
+              <div class="recap-header">Structured Message Preview</div>
+              <pre class="recap-body" id="recap-text"></pre>
+            </div>
+
+            <div class="success-actions">
+              <a class="button primary" id="mailto-direct-btn" href="mailto:brobex.ffx@gmail.com">
+                Email BROBEX Directly <span class="arrow">↗</span>
+              </a>
+              <button class="button ghost" type="button" id="copy-summary-btn">
+                <span>Copy Summary to Clipboard</span>
+              </button>
+              <a class="button ghost" href="index.html">
+                Return Home
+              </a>
+            </div>
+            
+            <p class="direct-email-note">
+              Direct email fallback: <a href="mailto:brobex.ffx@gmail.com">brobex.ffx@gmail.com</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section dark-band">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">COMMON QUESTIONS</span>
+            <h2 class="section-title">Inquiry & Collaboration FAQ</h2>
+          </div>
+          <p class="section-intro">
+            Everything you need to know about starting a web project, mobile repair service, and technical workflow with BROBEX.
+          </p>
+        </div>
+
+        <div class="faq-accordion" role="region" aria-label="Frequently Asked Questions">
+          
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-1">
+              <span>What types of project requests does BROBEX take on?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-1" class="faq-content" hidden>
+              <p>
+                BROBEX specializes in custom high-performance web development (React, Next.js, HTML5, CSS3, JavaScript/TypeScript), interactive web experiences (3D canvas, GSAP, WebGL), web applications, web games, and hardware mobile repair services.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-2">
+              <span>What is the standard process after I submit an inquiry?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-2" class="faq-content" hidden>
+              <p>
+                Once you send your inquiry details to <strong>brobex.ffx@gmail.com</strong>, we review your project scope, timeline, and goals. We will follow up via email within 24–48 hours with feedback, preliminary estimates, or scoping questions.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-3">
+              <span>How are project timelines and estimates determined?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-3" class="faq-content" hidden>
+              <p>
+                Timelines depend on complexity, design readiness, and required features. Simple landing pages take 1–2 weeks, while full custom web apps or interactive experiences typically span 2–4 weeks or longer. Budget ranges are transparently agreed upon before work begins.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-4">
+              <span>How does mobile hardware repair inquiry work?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-4" class="faq-content" hidden>
+              <p>
+                Select "Mobile repair" in the intake form or email us directly with your device model and issue (e.g., screen replacement, battery replacement, audio fix). We provide a diagnostic evaluation and component estimate before any repair commences.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-5">
+              <span>What communication channels do you use during projects?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-5" class="faq-content" hidden>
+              <p>
+                Email is our core channel for official documentation, project milestones, and deployment sign-offs. Instagram messages (@codewithbrobex) are also open for quick updates.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><a class="brand-link" href="index.html"><img class="brand-logo small" src="assets/brobex-logo.png" alt="BROBEX logo"></a><p>Technology, refined. Audio, repair, and digital work with intent.</p></div><div><h3>Explore</h3><nav><a href="index.html">Home</a><a href="airpods.html">AirPods</a><a href="repair.html">Mobile repair</a></nav></div><div><h3>Studio</h3><nav><a href="work.html">Work</a><a href="about.html">About</a></nav></div><div><h3>Reach out</h3><nav><a href="mailto:brobex.ffx@gmail.com">brobex.ffx@gmail.com</a></nav></div></div><div class="footer-bottom"><span>© <span data-year></span> BROBEX. All rights reserved.</span><span>Open channel.</span></div></footer>
-  <script src="js/navigation.js" defer></script><script src="js/main.js" defer></script><script src="js/contact.js" defer></script><script src="js/animations.js" defer></script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand-link" href="index.html">
+          <img class="brand-logo small" src="assets/brobex-logo.png" alt="BROBEX logo">
+        </a>
+        <p>Technology, refined. Audio, repair, and digital work with intent.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="airpods.html">AirPods</a>
+          <a href="repair.html">Mobile repair</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Studio</h3>
+        <nav>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Reach out</h3>
+        <nav>
+          <a href="mailto:brobex.ffx@gmail.com">brobex.ffx@gmail.com</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> BROBEX. All rights reserved.</span>
+      <span>Open channel.</span>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/contact.js" defer></script>
+  <script src="js/animations.js" defer></script>
 </body>
 </html>
